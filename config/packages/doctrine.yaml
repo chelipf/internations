@@ -5,6 +5,8 @@ doctrine:
         # IMPORTANT: You MUST configure your server version,
         # either here or in the DATABASE_URL env var (see .env file)
         #server_version: '15'
+        types:
+            user_id: App\Internations\Users\Infrastructure\Doctrine\UserIdType
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
@@ -13,11 +15,12 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
         mappings:
-            App:
+            User:
                 is_bundle: false
-                dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'App\Entity'
-                alias: App
+                type: xml
+                dir: '%kernel.project_dir%/src/Internations/Users/Infrastructure/Doctrine'
+                prefix: 'App\Internations\Users\Domain'
+                alias: User
 
 when@test:
     doctrine:
