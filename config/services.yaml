@@ -23,13 +23,8 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    App\Internations\Users\Application\UserCreator:
-        arguments:
-            $repository: '@App\Internations\Users\Infrastructure\DoctrineUserRepository'
-
-    App\Internations\Groups\Application\GroupCreator:
-        arguments:
-            $repository: '@App\Internations\Groups\Infrastructure\DoctrineGroupRepository'
+    App\Internations\Users\Domain\UserRepository: '@App\Internations\Users\Infrastructure\DoctrineUserRepository'
+    App\Internations\Groups\Domain\GroupRepository: '@App\Internations\Groups\Infrastructure\DoctrineGroupRepository'
 
     App\Internations\Shared\Infrastructure\Symfony\ExceptionListener:
         tags:
