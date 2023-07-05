@@ -7,6 +7,7 @@ doctrine:
         #server_version: '15'
         types:
             user_id: App\Internations\Users\Infrastructure\Doctrine\UserIdType
+            group_id: App\Internations\Groups\Infrastructure\Doctrine\GroupIdType
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
@@ -21,6 +22,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Internations/Users/Infrastructure/Doctrine'
                 prefix: 'App\Internations\Users\Domain'
                 alias: User
+            Group:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Internations/Groups/Infrastructure/Doctrine'
+                prefix: 'App\Internations\Groups\Domain'
+                alias: Group
 
 when@test:
     doctrine:

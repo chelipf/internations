@@ -27,6 +27,10 @@ services:
         arguments:
             $repository: '@App\Internations\Users\Infrastructure\DoctrineUserRepository'
 
+    App\Internations\Groups\Application\GroupCreator:
+        arguments:
+            $repository: '@App\Internations\Groups\Infrastructure\DoctrineGroupRepository'
+
     App\Internations\Shared\Infrastructure\Symfony\ExceptionListener:
         tags:
             - { name: kernel.event_listener, event: kernel.exception }
