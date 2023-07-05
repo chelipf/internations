@@ -4,6 +4,7 @@ namespace App\Internations\Users\Infrastructure;
 
 use App\Internations\Users\Domain\User;
 use App\Internations\Users\Domain\UserRepository;
+use App\Internations\Users\Domain\ValueObjects\UserId;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -16,6 +17,11 @@ class DoctrineUserRepository extends ServiceEntityRepository implements UserRepo
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, User::class);
+    }
+
+    public function search(UserId $id): ?User
+    {
+        return $this->getEntityManager()->find(User::class, $id);
     }
 
     public function save(User $user): void

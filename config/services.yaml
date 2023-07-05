@@ -26,3 +26,7 @@ services:
     App\Internations\Users\Application\UserCreator:
         arguments:
             $repository: '@App\Internations\Users\Infrastructure\DoctrineUserRepository'
+
+    App\Internations\Shared\Infrastructure\Symfony\ExceptionListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }
