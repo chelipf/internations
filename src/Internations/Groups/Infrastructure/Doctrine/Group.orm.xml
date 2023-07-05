@@ -8,6 +8,8 @@
         <id name="id" type="group_id" column="id" length="36" />
 
         <embedded name="name" class="App\Internations\Groups\Domain\ValueObjects\GroupName" use-column-prefix="false" />
+
+        <many-to-many field="users" mapped-by="groups" target-entity="App\Internations\Users\Domain\User"/>
     </entity>
 
 </doctrine-mapping>

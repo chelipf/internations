@@ -6,6 +6,7 @@ namespace App\Internations\Groups\Application;
 
 use App\Internations\Groups\Domain\GroupNotExist;
 use App\Internations\Groups\Domain\GroupRepository;
+use App\Internations\Groups\Domain\GroupWithUsers;
 use App\Internations\Groups\Domain\ValueObjects\GroupId;
 
 final class GroupRemover
@@ -21,6 +22,10 @@ final class GroupRemover
 
         if (null === $group) {
             throw new GroupNotExist($id);
+        }
+
+        if($group->hasUsers()) {
+            throw new GroupWithUsers($id);
         }
 
         $this->repository->remove($group);
