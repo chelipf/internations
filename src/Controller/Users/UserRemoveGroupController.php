@@ -5,7 +5,6 @@ namespace App\Controller\Users;
 
 use App\Internations\Users\Application\UserGroupRemover;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Requirement\Requirement;
@@ -13,7 +12,7 @@ use Symfony\Component\Routing\Requirement\Requirement;
 final class UserRemoveGroupController extends AbstractController
 {
     #[Route('/users/{userId}/{groupId}', methods: ['DELETE'], requirements: ['userId' => Requirement::UUID_V4, 'groupId' => Requirement::UUID_V4])]
-    public function __invoke(string $userId, string $groupId, Request $request, UserGroupRemover $userGroupRemover): Response
+    public function __invoke(string $userId, string $groupId, UserGroupRemover $userGroupRemover): Response
     {
         $userGroupRemover->__invoke($userId, $groupId);
 
